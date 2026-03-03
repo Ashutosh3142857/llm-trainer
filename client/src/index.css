@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Sleek Dark Mode Palette (Default) */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 226 100% 64%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 226 100% 64%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 226 100% 64%;
+
+    --radius: 0.75rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  pre, code, kbd, samp {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-border shadow-2xl;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .terminal-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .terminal-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full;
+  }
+  .terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-700;
+  }
+}
+
+/* Custom pulsing animation for active training */
+@keyframes train-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .8; transform: scale(1.02); }
+}
+.animate-train-pulse {
+  animation: train-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
